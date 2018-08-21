@@ -1,0 +1,20 @@
+function y=segmentation(x,color,threshold)
+    y=x;
+    channelR=y(:,:,1);
+    channelG=y(:,:,2);
+    channelB=y(:,:,3);
+    gray=rgb2gray(x);
+    dR=channelR-color(1);
+    dG=channelG-color(2);
+    dB=channelB-color(3);
+    d=dR.^2+dG.^2+dB.^2;
+    %mask=dR<threshold&dG<threshold&dB<threshold;
+    mask=d<threshold;
+    y=mask;
+%     channelR(mask)=gray(mask);
+%     channelG(mask)=gray(mask);
+%     channelB(mask)=gray(mask);
+%     y(:,:,1)=channelR;
+%     y(:,:,2)=channelG;
+%     y(:,:,3)=channelB;
+end
